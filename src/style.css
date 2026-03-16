@@ -1,0 +1,108 @@
+/* src/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+/* 1. 全局变量定义 (Root Scope) */
+:root {
+  /* --- 核心色板 --- */
+  --bg-deep: #050a10;                /* 最深背景 */
+  --bg-gradient: radial-gradient(circle at top right, #1a2a3a 0%, #050a10 100%);
+  
+  /* --- 玻璃材质 --- */
+  --glass-bg: rgba(20, 30, 45, 0.6); /* 玻璃底色 */
+  --glass-border: rgba(255, 255, 255, 0.15); /* 玻璃边框 */
+  --glass-shine: rgba(255, 255, 255, 0.05); /* 玻璃反光 */
+  --blur-strength: 25px;             /* 全局模糊强度 */
+  
+  /* --- 强调色 (霓虹/赛博) --- */
+  --accent-cyan: #00f7ff;            /* 青色 (科技/正常) */
+  --accent-pink: #ff0055;            /* 粉色 (警告/高亮) */
+  --accent-orange: #ff9900;          /* 橙色 (时间/注意) */
+  
+  /* --- 文字颜色 --- */
+  --text-main: #e0faff;              /* 主标题 */
+  --text-dim: #8899aa;               /* 次要信息 */
+  
+  /* --- 圆角规范 --- */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --panel-radius: 24px; /* 大圆角 */
+}
+
+/* 2. 全局重置与基础样式 */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-deep); /* 防止加载时出现白屏 */
+  background-image: var(--bg-gradient); /* 全局背景 */
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden; /* 防止横向滚动条 */
+}
+
+/* 3. 全局滚动条美化 (Webkit内核: Chrome, Edge, Safari) */
+/* 只要加上这个，整个系统所有出现滚动条的地方都会变身 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* 轨道透明 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 247, 255, 0.2); /* 青色半透明 */
+  border-radius: 4px;
+  border: 2px solid transparent; /* 利用 border 制造“悬浮”感 */
+  background-clip: padding-box;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 247, 255, 0.5); /* 悬停变亮 */
+}
+
+/* 兼容 Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 247, 255, 0.3) transparent;
+}
+
+/* 4. 通用玻璃面板类 (Utility Classes) */
+/* 以后任何组件想变成玻璃，直接加 class="glass-panel" 即可 */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-strength));
+  -webkit-backdrop-filter: blur(var(--blur-strength));
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    inset 0 1px 1px var(--glass-shine),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-lg);
+}
+
+/* 5. 通用液态按钮 */
+.liquid-btn {
+  background: rgba(0, 247, 255, 0.1);
+  border: 1px solid rgba(0, 247, 255, 0.3);
+  color: var(--accent-cyan);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.liquid-btn:hover:not(:disabled) {
+  background: var(--accent-cyan);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+}
+
+.liquid-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
