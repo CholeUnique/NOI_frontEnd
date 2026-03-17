@@ -1937,6 +1937,8 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleGlobalKeydown);
 });
+
+//缺功能：与ArticalDetail写作状态相互传值，若有必要VisualPanel里的内容也可以单向传进输入框
 </script>
 
 <style scoped>
