@@ -7,7 +7,7 @@
 ### 核心框架与语言
 - 框架：`Vue 3`（SFC 单文件组件，`<script setup>`）
 - 构建：`Vite`
-- 语言：未发现 `TypeScript`，当前代码主要为 `JavaScript`（`.js` / `.vue` 内 JS）
+- 语言：主要为 `JavaScript`（`.js` / `.vue` 内 JS）
 
 ### 状态管理与路由
 - 全局状态：`Pinia`
@@ -27,7 +27,6 @@
 - 富文本编辑器：`@vueup/vue-quill`
   - 主要用于 `src/components/ArticleDetail.vue` 的文章内容编辑
 - 样式方案：
-  - 未发现 `Tailwind CSS` 或 `CSS Modules`
   - 采用“全局 CSS 变量 + 组件级 scoped CSS”的方式：
     - `src/style.css`：定义玻璃拟态配色、圆角、强调色等变量（如 `--accent-cyan`、`--glass-bg`）
     - 各页面/组件内大量 `scoped` 样式实现科幻/液态 UI
